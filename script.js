@@ -1,6 +1,5 @@
-// var myLibrary = [];
 var bookForm = document.getElementById('add');
-var arr = ''
+
 
 const createEl = function(element){
     var newDiv = document.createElement(element)
@@ -10,14 +9,15 @@ const createEl = function(element){
 
 const show = function(library){
     for(x=0;x<=library.length;x++){
-        newDisplay = display.appendChild(createEl('div'))
+        newDisplay = display.appendChild(createEl('p'))
         newDisplay.innerHTML = library[x].printBook()
         newDisplay.style.border = "1px solid gray"
         newDisplay.style.borderRadius = "5px"
         newDisplay.style.padding = "5px"
         newDisplay.style.margin = "3px"
-        newDisplay.style.display = "flexbox"
-        newDisplay.style.flexDirection = "column"
+        
+        
+        
 
     }
     
@@ -39,15 +39,28 @@ function Book(title, author, pages, read){
 
 
 bookForm.addEventListener('click', (e) => {
+    e.preventDefault();
     const getTitle = document.getElementById('title').value
     const getAuthor = document.getElementById('author').value
     const getPages = document.getElementById('pages').value
-    const getRead = document.querySelectorAll("label[name='read']:checked").value
-
-    let addToLibrary = new Book(getTitle, getAuthor, getPages, getRead);
+    const getRead = document.querySelectorAll('#read')
+    for(x = 0; x < getRead.length; x++){
+        
+        if(getRead[x].checked){
+            var checkRead = getRead[x].value
+            // console.log(getRead[x].value)
+        }
+        
+        
+    }
+    
+    let addToLibrary = new Book(getTitle, getAuthor, getPages, checkRead);
     let myLibrary = []
     myLibrary.push(addToLibrary);
     show(myLibrary)
 
     
 })
+
+
+

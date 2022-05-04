@@ -1,0 +1,16 @@
+*{
+    margin:0px
+}
+
+#display{
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+input{
+    border:2px solid gray;
+    height: 20px;
+    align-items: center;
+}
