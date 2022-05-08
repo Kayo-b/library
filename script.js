@@ -2,14 +2,25 @@ var bookForm = document.getElementById('add');
 
 
 const createEl = function(element){
-    var newDiv = document.createElement(element)
-    return newDiv
+    var newEl = document.createElement(element)
+    newEl.classList.add('newDiv')
+   
+    return newEl
 }
 
+const deleteEl = function(element){
+    element.addEventListener()
+    element.remove('div')
+}
 
 const show = function(library){
+    let newDisplay = display.appendChild(createEl('div'))
+
     for(x=0;x<=library.length;x++){
-        newDisplay = display.appendChild(createEl('p'))
+        // var button = document.createElement('button')
+        // button.innerHTML = "DELETE"
+        // newDisplay.appendChild(button)
+        deleteBut()
         newDisplay.innerHTML = library[x].printBook()
         newDisplay.style.border = "1px solid gray"
         newDisplay.style.borderRadius = "5px"
@@ -22,6 +33,13 @@ const show = function(library){
     }
     
 }
+
+const deleteBut = function(){
+    var button = document.createElement('button')
+    button.innerHTML = "DELETE"
+    newDisplay.appendChild(button)
+}
+
 
 function Book(title, author, pages, read){
     this.title = title;
