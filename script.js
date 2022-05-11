@@ -1,35 +1,28 @@
 var bookForm = document.getElementById('add');
 
-
 const createEl = function(element){
     var newEl = document.createElement(element)
-    newEl.classList.add('newDiv')
-   
+    // newEl.classList.add('newDiv')
+    newEl.setAttribute('class', 'newDidv')
     return newEl
 }
 
 const deleteEl = function(element){
-    element.addEventListener()
-    element.remove('div')
+    
+    element.remove
 }
 
 const show = function(library){
-    let newDisplay = display.appendChild(createEl('div'))
-
+    var newDisplay = display.appendChild(createEl('div'))
+   
     for(x=0;x<=library.length;x++){
-        // var button = document.createElement('button')
-        // button.innerHTML = "DELETE"
-        // newDisplay.appendChild(button)
-        deleteBut()
+        newDisplay.appendChild(deleteBut())
         newDisplay.innerHTML = library[x].printBook()
         newDisplay.style.border = "1px solid gray"
         newDisplay.style.borderRadius = "5px"
         newDisplay.style.padding = "5px"
         newDisplay.style.margin = "3px"
         
-        
-        
-
     }
     
 }
@@ -37,9 +30,27 @@ const show = function(library){
 const deleteBut = function(){
     var button = document.createElement('button')
     button.innerHTML = "DELETE"
-    newDisplay.appendChild(button)
+    button.setAttribute("id","delBut")
+
+    return button
+    
 }
 
+
+
+document.addEventListener('click',function(e){
+    if(e.target.id== 'delBut'){
+          //do something
+          console.log('teste')
+          var elem = e.target
+          elem = elem.parentNode
+          elem.remove(elem.parentNode)
+    }
+});
+
+function removeItem(div){
+
+}
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -56,8 +67,9 @@ function Book(title, author, pages, read){
 }
 
 
+
 bookForm.addEventListener('click', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const getTitle = document.getElementById('title').value
     const getAuthor = document.getElementById('author').value
     const getPages = document.getElementById('pages').value
@@ -72,13 +84,11 @@ bookForm.addEventListener('click', (e) => {
         
     }
     
-    let addToLibrary = new Book(getTitle, getAuthor, getPages, checkRead);
-    let myLibrary = []
+    var addToLibrary = new Book(getTitle, getAuthor, getPages, checkRead);
+    var myLibrary = []
     myLibrary.push(addToLibrary);
     show(myLibrary)
-
     
+      
 })
-
-
 
