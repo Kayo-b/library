@@ -2,7 +2,6 @@ var bookForm = document.getElementById('add');
 
 const createEl = function(element){
     var newEl = document.createElement(element)
-    // newEl.classList.add('newDiv')
     newEl.setAttribute('class', 'newDidv')
     return newEl
 }
@@ -17,6 +16,7 @@ const show = function(library){
    
     for(x=0;x<=library.length;x++){
         newDisplay.appendChild(deleteBut())
+        // newDisplay.appendChild(readCheck())
         newDisplay.innerHTML = library[x].printBook()
         newDisplay.style.border = "1px solid gray"
         newDisplay.style.borderRadius = "5px"
@@ -37,6 +37,14 @@ const deleteBut = function(){
 }
 
 
+const readCheck = function(){
+    var readIt = document.createElement('input')
+    readIt.innerHTML = "Read it"
+    readIt.setAttribute('type', "checkbox")
+
+    return readIt
+}
+
 
 document.addEventListener('click',function(e){
     if(e.target.id== 'delBut'){
@@ -48,10 +56,6 @@ document.addEventListener('click',function(e){
     }
 });
 
-function removeItem(div){
-
-}
-
 function Book(title, author, pages, read){
     this.title = title;
     this.author = author;
@@ -62,7 +66,7 @@ function Book(title, author, pages, read){
         `Book Title: ${this.title} <br>
         Author: ${this.author} <br>
         <b>Number of Pages:</b> ${this.pages} <br>
-        Read: ${this.read}`
+        Read It: ${this.read}<br>`
     }
 }
 
@@ -73,16 +77,30 @@ bookForm.addEventListener('click', (e) => {
     const getTitle = document.getElementById('title').value
     const getAuthor = document.getElementById('author').value
     const getPages = document.getElementById('pages').value
-    const getRead = document.querySelectorAll('#read')
-    for(x = 0; x < getRead.length; x++){
-        
-        if(getRead[x].checked){
-            var checkRead = getRead[x].value
-            // console.log(getRead[x].value)
-        }
-        
-        
+    const getRead = document.getElementById('read')
+
+
+    if(getRead.checked){
+        // getRead.setAttribute('value', 'Yes')
+
+        var checkRead = document.createElement('div') 
+        checkRead.appendChild(readCheck())
     }
+    else{
+        var checkRead = document.createElement('div') 
+        checkRead.appendChild(readCheck())
+        
+
+    }
+    // for(x = 0; x < getRead.length; x++){
+        
+    //     if(getRead[x].checked){
+    //         var checkRead = getRead[x].value
+    //         // console.log(getRead[x].value)
+    //     }
+        
+        
+    // }
     
     var addToLibrary = new Book(getTitle, getAuthor, getPages, checkRead);
     var myLibrary = []
