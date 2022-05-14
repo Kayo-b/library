@@ -1,16 +1,78 @@
 *{
     margin:0px
+
+}
+body{
+    background-color: rgb(124, 124, 128);
 }
 
+#header{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    padding:5px;
+    background-color: rgb(118, 131, 162);
+    border: 2px solid darkgray;
+}
 #display{
     display:flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
+
 }
 
+/* div{
+    background-color: rgb(47, 46, 46);
+} */
 input{
     border:2px solid gray;
     height: 20px;
     align-items: center;
+    background-color: rgb(215, 215, 215);
+    font-family:monospace;
+    padding:3px;
+}
+
+.newDisplay{
+    background-color: rgb(118, 131, 162);
+    
+}
+
+#main{
+    background-color: rgb(124, 124, 128);
+    font-family:monospace;
+    
+}
+
+#read, #newCheck{
+    /* display: inline-block; */
+    vertical-align: middle;
+    
+}
+
+#box{
+    display:flex;
+    justify-content: space-between;
+}
+#add{
+    background:url(plusSign.svg);
+    width:25px;
+    height:25px;
+    background-size: 119%;
+    background-position-y: center;
+    background-position-x: center;
+    border-radius:50px;
+    border-color: #1b1f24;
+    color: #343063;
+    /* display:block; */
+    margin:auto
+}
+
+
+#delBut{
+    border-color: #829dc1;
+    color: #343063;
+
 }

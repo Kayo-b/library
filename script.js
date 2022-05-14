@@ -23,7 +23,7 @@ const show = function(value,library, input){
         var box = document.getElementById('box')
         var newDiv = document.querySelectorAll('.newDisplay')
         newDiv[x].children[3].appendChild(readCheck(input))
-        newDisplay.style.border = "1px solid gray"
+        newDisplay.style.border = "2px solid darkgray"
         newDisplay.style.borderRadius = "5px"
         newDisplay.style.padding = "5px"
         newDisplay.style.margin = "3px"
@@ -45,20 +45,19 @@ const readCheck = function(input){
     var readIt = document.createElement('input')
     readIt.innerHTML = "Read it"
     readIt.setAttribute('type', "checkbox")
+    readIt.setAttribute('id','newCheck')
     if(input == 1){
         readIt.setAttribute('checked', 'checked')
     }
     return readIt
 }
 
-//Delete button del function
+//Delete/set style = none function
 document.addEventListener('click',function(e){
     if(e.target.id== 'delBut'){
           var elem = e.target
           elem = elem.parentNode
-          console.log(elem)
-          elem.remove(elem)
-          console.log(value)
+          elem.style.display = "none"
           
 
           
@@ -74,25 +73,17 @@ function Book(title, author, pages, read){
     this.read = read;
     this.printBook = function() {
         let container = createEl('div', 'id', 'container')
-        // container.setAttribute('id', 'container');
-        // container.style.display = "flex";
-        // container.style.flexDirection = "row";
         let bookTitle = createEl('div', 'id', 'title');
-        bookTitle.innerHTML = `Book Title: ${this.title}`
         let author = createEl('div', 'id', 'author');
-        author.innerHTML = `Author: ${this.title}`
         let nmPages = createEl('div', 'id', 'pages');
-        nmPages.innerHTML = `Pages: ${this.title}`;
         let read = createEl('div', 'id', 'box');
-        // read.setAttribute('id', 'box')
+        bookTitle.innerHTML = `Book Title: ${this.title}`
+        author.innerHTML = `Author: ${this.author}`
+        nmPages.innerHTML = `Pages: ${this.pages}`;
         read.innerHTML = `Read`;
         container.append(bookTitle, author, nmPages,read)
         return container.innerHTML
-        // return createEl('p').innerHTML = 
-        // `Book Title: ${this.title} <br>
-        // Author: ${this.author} <br>
-        // <b>Number of Pages:</b> ${this.pages} <br>
-        // Read `
+    
     }
 }
 
