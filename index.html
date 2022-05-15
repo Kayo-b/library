@@ -8,11 +8,13 @@
         <title>Library</title>
     </head>
     <body>
+        <form>
+
         <div id="main">
             <div id="header">
-            <input name="title" id="title" type="text" placeholder="Book Title">
+            <input name="title" id="title" type="text" placeholder="Book Title" required maxlength="30">
             <input name="author" id="author" type="text" placeholder="Author's Name">
-            <input name="pages" id="pages" type="num" placeholder="Number of pages">
+            <input name="pages" id="pages" type="number" placeholder="Number of pages" min="0" max="9999999">
             <label for="read"><b>Check if read</b></label>
             <input type="checkbox" name="read" id="read">
             <button id="add" type="submit"></button>
@@ -21,7 +23,7 @@
             <div id="display"></div>
         </div>
 
-
+        </form>
         
         
     </body>

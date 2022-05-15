@@ -87,9 +87,16 @@ function Book(title, author, pages, read){
     }
 }
 
+const clearField = function(x){
+    document.getElementById('title').value = ''
+    document.getElementById('author').value = ''
+    document.getElementById('pages').value = ''
+    document.getElementById('read').checked = false
 
+}
 //'Add Book' event listener + creates object from Book constructor and pushes it
 //to array and runs show() function
+
 bookForm.addEventListener('click', (e) => {
     // e.preventDefault();
 
@@ -97,7 +104,6 @@ bookForm.addEventListener('click', (e) => {
     const getAuthor = document.getElementById('author').value
     const getPages = document.getElementById('pages').value
     const getRead = document.getElementById('read')
-
     if(getRead.checked){  
         getRead.setAttribute('value', 1)
         var checkRead = getRead.value
@@ -111,5 +117,5 @@ bookForm.addEventListener('click', (e) => {
     myLibrary.push(addToLibrary);
     show(value,myLibrary, input)
     value++
+    clearField()
 })
-
