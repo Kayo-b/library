@@ -1,2 +1,2 @@
 # library
-Books listing with objects indide arrays
+Books listing using objects inside an array
