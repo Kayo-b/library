@@ -2,6 +2,9 @@ var bookForm = document.getElementById('add');
 var myLibrary = []
 var value = 0
 var index = null
+var index2 = null
+var pageCount = 0
+
 
 //Create element function
 const createEl = function(element, type, name){
@@ -23,6 +26,7 @@ const show = function(value,library, input){
         var box = document.getElementById('box')
         var newDiv = document.querySelectorAll('.newDisplay')
         newDiv[x].children[3].appendChild(readCheck(input))
+        getIndex()
         newDisplay.style.border = '2px solid darkgray'
         newDisplay.style.borderRadius ='5px'
         newDisplay.style.padding = '5px'
@@ -46,10 +50,43 @@ const readCheck = function(input){
     readIt.innerHTML = 'Read it'
     readIt.setAttribute('type', 'checkbox')
     readIt.setAttribute('id','newCheck')
-    if(input == 1){
+    if(input == 'yes'){
         readIt.setAttribute('checked', 'checked')
+        readIt.setAttribute('value', 'yes')
+    }
+    else{
+        readIt.setAttribute('value', 'no')
     }
     return readIt
+}
+
+//Update 'read' key of object inside array function
+const updateObj = function(indexNum, value){
+
+    myLibrary[indexNum].read = value
+
+}
+
+//Getting new 'read' key value and array index
+const getIndex = function(){
+    document.addEventListener('change', (e)=>{
+        if(e.target.id == 'newCheck'){
+            var elemCheck = e.target
+            console.log(elemCheck.checked)
+            if(elemCheck.checked){
+                elemCheck.setAttribute('value','yes')
+            }
+            else{
+                elemCheck.setAttribute('value', 'no')
+            }
+            var y = [...document.querySelectorAll('#newCheck')]
+            index2 = y.indexOf(elemCheck) 
+            console.log(elemCheck.value) 
+            updateObj(index2,elemCheck.value)
+
+        }
+    })
+    return index2
 }
 
 //Delete/set style = none function
@@ -110,11 +147,11 @@ bookForm.addEventListener('click', (e) => {
         const getPages = document.getElementById('pages').value
         const getRead = document.getElementById('read')
         if(getRead.checked){  
-            getRead.setAttribute('value', 1)
+            getRead.setAttribute('value', 'yes')
             var checkRead = getRead.value
         }
         else{
-            getRead.setAttribute('value', 2)
+            getRead.setAttribute('value', 'no')
             var checkRead = getRead.value   
         }
 

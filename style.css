@@ -108,3 +108,10 @@ input:invalid{
 input:valid{
     border-color: green;
 } */
+
+#counter{
+    font-size:x-large;
+    display: grid;
+    margin-left:50px
+    
+}
